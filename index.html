@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bimestrais</title>
+    <style>
+        body {
+            background: rgb(42, 42, 42);
+            color: rgb(255, 255, 255);
+            font-family: Helvetica;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .res {
+            /* text-align: center; */
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media(max-width: 600px) {
+            .res {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+        .botao {
+            display: flex;
+            justify-content: center;
+        }
+
+        textarea {
+            width: 80%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        button {
+            width: 320px;
+            height: 100px;
+            margin: 0 auto;
+            padding: 0;
+            line-height: 100px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        /*  */
+    </style>
+</head>
+
+<body>
+    <div>
+        <center>
+            <button onclick="inserir()">Inserir alunos</button>
+            <br><br>
+        </center>
+        <textarea name="" id="names" cols="30" rows="10" placeholder="ALUNOS SEPARADOS POR TURMA E QUEBRA DE LINHA"></textarea>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <div>
+            <button onclick="distribuir()">Distribuir entre salas</button>
+            <h1>Distribuição: </h1>
+            <div>
+                <table border="1">
+                    <tr>
+                        <th></th>
+                        <!-- <th>9A</th> -->
+                        <!-- <th>9B</th> -->
+                        <th>7A</th>
+                        <th>7B</th>
+                        <th>7C</th>
+                        <th>8A</th>
+                        <th>8B</th>
+                        <th>9A</th>
+                        <th>9B</th>
+                        <th>Total</th>
+                    </tr>
+                    <!-- <tr>
+                        <th>Sala 9A</th>
+                        <td id="a9A9A"></td>
+                        <td id="a9A9B"></td>
+                        <td id="a9A1A"></td>
+                        <td id="a9A1B"></td>
+                        <td id="a9A2A"></td>
+                        <td id="a9A2B"></td>
+                        <td id="a9A3A"></td>
+                        <td id="a9A3B"></td>
+                        <td id="a9A"></td>
+                    </tr>
+                    <tr>
+                        <th>Sala 9B</th>
+                        <td id="a9B9A"></td>
+                        <td id="a9B9B"></td>
+                        <td id="a9B1A"></td>
+                        <td id="a9B1B"></td>
+                        <td id="a9B2A"></td>
+                        <td id="a9B2B"></td>
+                        <td id="a9B3A"></td>
+                        <td id="a9B3B"></td>
+                        <td id="a9B"></td>
+                    </tr> -->
+                    <tr>
+                        <th>Sala 7A</th>
+                        <!-- <td id="a1A9A"></td> -->
+                        <td id="a7A7C"></td>
+                        <td id="a7A7A"></td>
+                        <td id="a7A7B"></td>
+                        <td id="a7A8A"></td>
+                        <td id="a7A8B"></td>
+                        <td id="a7A9A"></td>
+                        <td id="a7A9B"></td>
+                        <td id="a7A"></td>
+                    </tr>
+                    <tr>
+                        <th>Sala 7B</th>
+                        <!-- <td id="a7B9A"></td> -->
+                        <td id="a7B7C"></td>
+                        <td id="a7B7A"></td>
+                        <td id="a7B7B"></td>
+                        <td id="a7B8A"></td>
+                        <td id="a7B8B"></td>
+                        <td id="a7B9A"></td>
+                        <td id="a7B9B"></td>
+                        <td id="a7B"></td>
+                    </tr>
+                    <tr>
+                        <th>Sala 7C</th>
+                        <!-- <td id="a7C9A"></td> -->
+                        <td id="a7C7C"></td>
+                        <td id="a7C7A"></td>
+                        <td id="a7C7B"></td>
+                        <td id="a7C8A"></td>
+                        <td id="a7C8B"></td>
+                        <td id="a7C9A"></td>
+                        <td id="a7C9B"></td>
+                        <td id="a7C"></td>
+                    </tr>
+                    <tr>
+                        <th>Sala 8A</th>
+                        <!-- <td id="a8A9A"></td> -->
+                        <td id="a8A7C"></td>
+                        <td id="a8A7A"></td>
+                        <td id="a8A7B"></td>
+                        <td id="a8A8A"></td>
+                        <td id="a8A8B"></td>
+                        <td id="a8A9A"></td>
+                        <td id="a8A9B"></td>
+                        <td id="a8A"></td>
+                    </tr>
+                    <tr>
+                        <th>Sala 8B</th>
+                        <!-- <td id="a8B9A"></td> -->
+                        <td id="a8B7C"></td>
+                        <td id="a8B7A"></td>
+                        <td id="a8B7B"></td>
+                        <td id="a8B8A"></td>
+                        <td id="a8B8B"></td>
+                        <td id="a8B9A"></td>
+                        <td id="a8B9B"></td>
+                        <td id="a8B"></td>
+                    </tr>
+                    <tr>
+                        <th>Sala 9A</th>
+                        <!-- <td id="a9A9A"></td> -->
+                        <td id="a9A7C"></td>
+                        <td id="a9A7A"></td>
+                        <td id="a9A7B"></td>
+                        <td id="a9A8A"></td>
+                        <td id="a9A8B"></td>
+                        <td id="a9A9A"></td>
+                        <td id="a9A9B"></td>
+                        <td id="a9A"></td>
+                    </tr>
+                    <tr>
+                        <th>Sala 9B</th>
+                        <!-- <td id="a9B9A"></td> -->
+                        <td id="a9B7C"></td>
+                        <td id="a9B7A"></td>
+                        <td id="a9B7B"></td>
+                        <td id="a9B8A"></td>
+                        <td id="a9B8B"></td>
+                        <td id="a9B9A"></td>
+                        <td id="a9B9B"></td>
+                        <td id="a9B"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="botao">
+        <button onclick="gerar()" class="botao">Gerar nova combinação</button>
+        <button onclick="gerarPDF()" class="botao">Gerar PDF</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="res">
+        <!-- <div id="res9A" class="content"></div> -->
+        <div id="res7A" class="content"></div>
+        <div id="res7B" class="content"></div>
+        <div id="res7C" class="content"></div>
+        <div id="res8A" class="content"></div>
+        <div id="res8B" class="content"></div>
+        <div id="res9A" class="content"></div>
+        <div id="res9B" class="content"></div>
+    </div>
+    <br>
+    <div id="res"></div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
